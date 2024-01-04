@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::mydashboard})}">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>user registration</title>
+
+</head>
+
+<mydashboard>
+	<div class="clearfix"></div>
+	<div class="x_panel">
+		<div class="x_title">
+
+			<ul class="nav navbar-right panel_toolbox">
+				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+							class="fa fa-wrench"></i></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">Settings 1</a>
+						</li>
+						<li><a href="#">Settings 2</a>
+						</li>
+					</ul>
+				</li>
+				<li><a class="close-link"><i class="fa fa-close"></i></a>
+				</li>
+			</ul>
+			<div class="clearfix"></div>
+
+			<div class="clearfix"></div>
+		</div>
+		 
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Create Category</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+		<div class="x_content">
+
+			<div th:if="${flashMessage != null}" class="alert alert-success" id="flashMessage">
+				<p th:text="${flashMessage}"></p>
+			</div>
+			<div th:if="${failureMessage != null}" class="alert alert-danger">
+				<p th:text="${failureMessage}"></p>
+			</div>
+			<!-- start form for validation -->
+			<form id="demo-form" data-parsley-validate method="post" modelAttribute="userDto"
+				enctype="multipart/form-data" th:action="@{/medvault/category/createcategory}" th:object="${categoryDto}">
+
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<input type="hidden" name="id" th:field="*{id}" />
+
+				<div class="row">
+					
+					<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+						<label for="name">Category Name * :</label>
+						<input type="text" id="name" name="name" th:field="*{name}" placeholder="" required
+							class="form-control">
+						<ul>
+							<li style="color: red;" th:each="err:${#fields.errors('name')}" th:text="${err}"
+								class="error" />
+
+							</li>
+						</ul>
+
+					</div>
+					<div class="col-md-6 col-sm-12 col-xs-12 form-group">
+						<label for="name">Description * :</label>
+						<input type="text" id="description" name="description" th:field="*{description}" placeholder="" required
+							class="form-control">
+						<ul>
+							<li style="color: red;" th:each="err:${#fields.errors('description')}" th:text="${err}"
+								class="error" />
+
+							</li>
+						</ul>
+
+					</div>
+					
+					
+				</div>
+				
+				<input type="submit" class="btn btn-primary" value="submit" />
+			</form>
+			<!-- end form for validations -->
+		</div>
+	</div>
+</mydashboard>
+
+
+
+
+</body>
+
+</html>

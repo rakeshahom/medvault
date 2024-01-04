@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Meta, title, CSS, favicons, etc. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title th:text="${title}">GPT</title>
+
+	<!-- Bootstrap -->
+	<link th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link th:href="@{/vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<!-- NProgress -->
+	<link th:href="@{/vendors/nprogress/nprogress.css}" rel="stylesheet">
+	<!-- iCheck -->
+	<link th:href="@{/vendors/iCheck/skins/flat/green.css}" rel="stylesheet">
+	<!-- bootstrap-wysiwyg -->
+	<link th:href="@{/vendors/google-code-prettify/bin/prettify.min.css}" rel="stylesheet">
+	<!-- Select2 -->
+	<link th:href="@{/vendors/select2/dist/css/select2.min.css}" rel="stylesheet">
+	<!-- Switchery -->
+	<link th:href="@{/vendors/switchery/dist/switchery.min.css}" rel="stylesheet">
+	<!-- starrr -->
+	<link th:href="@{/vendors/starrr/dist/starrr.css}" rel="stylesheet">
+	<!-- bootstrap-daterangepicker -->
+	<link th:href="@{/vendors/bootstrap-daterangepicker/daterangepicker.css}" rel="stylesheet">
+	<!-- Datatables -->
+	<link th:href="@{/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css}" rel="stylesheet">
+
+	<!-- Custom Theme Style -->
+	<link th:href="@{/build/css/custom.min.css}" rel="stylesheet">
+	<style>
+		#digital-clock {
+			color: white;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>MedVault</span></a>
+						<div id="digital-clock"></div>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<!-- menu profile quick info -->
+					<div class="profile clearfix">
+						<div class="profile_pic">
+							<img th:src="@{/production/images/img.jpg}" alt="..." class="img-circle profile_img">
+
+						</div>
+						<div class="profile_info">
+							<span>Welcome,</span>
+							<h2>John Doe</h2>
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
+
+					<br />
+
+					<!-- sidebar menu -->
+					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<h3>General</h3>
+							<ul class="nav side-menu">
+								<li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/medvault/admin/dashboard}">Dashboard</a></li>
+										
+									</ul>
+								</li>
+								<li><a><i class="fa fa-edit"></i> CMS <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/medvault/role/createrole}">Create New Roles</a></li>
+										<li><a th:href="@{/medvault/user/signup}">Create New User</a></li>
+										
+										<li><a th:href="@{/medvault/role/getallrole}">Manage Roles</a></li>
+										<li><a th:href="@{/medvault/user/getalluser}">Manage User</a></li>
+										
+									</ul>
+								</li>
+								<li><a><i class="fa fa-desktop"></i>Create <span
+											class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/medvault/category/createcategory}">Category</a></li>
+										
+										<li><a th:href="@{/medvault/medicine/createmedicine}">Medicine</a></li>
+										
+									</ul>
+								</li>
+								
+							</ul>
+						</div>
+						<div class="menu_section">
+							<!--<h3>Live On</h3>-->
+							<ul class="nav side-menu">
+								<li><a><i class="fa fa-bug"></i> Manage <span
+											class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a th:href="@{/medvault/category/getallcategory}">Category</a></li>
+										<li><a th:href="@{/medvault/medicine/getallmedicine}">Medicine</a></li>
+									</ul>
+								</li>
+								<!--<li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="page_403.html">403 Error</a></li>
+										<li><a href="page_404.html">404 Error</a></li>
+										<li><a href="page_500.html">500 Error</a></li>
+										<li><a href="plain_page.html">Plain Page</a></li>
+										<li><a href="login.html">Login Page</a></li>
+										<li><a href="pricing_tables.html">Pricing Tables</a></li>
+									</ul>
+								</li>
+								<li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span
+											class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="#level1_1">Level One</a>
+										<li><a>Level One<span class="fa fa-chevron-down"></span></a>
+											<ul class="nav child_menu">
+												<li class="sub_menu"><a href="level2.html">Level Two</a>
+												</li>
+												<li><a href="#level2_1">Level Two</a>
+												</li>
+												<li><a href="#level2_2">Level Two</a>
+												</li>
+											</ul>
+										</li>
+										<li><a href="#level1_2">Level One</a>
+										</li>
+									</ul>
+								</li>
+								<li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span
+											class="label label-success pull-right">Coming Soon</span></a></li>-->
+							</ul>
+						</div>
+
+					</div>
+					<!-- /sidebar menu -->
+
+					<!-- /menu footer buttons -->
+					<!--<div class="sidebar-footer hidden-small">
+						<a data-toggle="tooltip" data-placement="top" title="Settings">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" data-placement="top" title="FullScreen">
+							<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" data-placement="top" title="Lock">
+							<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+							<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+						</a>
+					</div>-->
+					<!-- /menu footer buttons -->
+				</div>
+			</div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+
+						</div>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class="">
+								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+									aria-expanded="false">
+									<img th:src="@{/production/images/img.jpg}" alt="">avneesh
+									<span class=" fa fa-angle-down"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a href="javascript:;"> Profile</a></li>
+									<li>
+										<a href="javascript:;">
+											<span class="badge bg-red pull-right">50%</span>
+											<span>Settings</span>
+										</a>
+									</li>
+									<li><a href="javascript:;">Help</a></li>
+									<li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								</ul>
+							</li>
+
+							<li role="presentation" class="dropdown">
+								<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+									aria-expanded="false">
+									<i class="fa fa-envelope-o"></i>
+									<span class="badge bg-green" id="notificationCount"></span>
+								</a>
+								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+									<div id="responseDiv" style="overflow-y: scroll; max-height: 200px;"></div>
+									<li>
+										<div class="text-center">
+											<a>
+												<strong>See All Alerts</strong>
+												<i class="fa fa-angle-right"></i>
+											</a>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<section class="section dashboard">
+
+						<div class="row" th:replace="${content}"></div>
+
+					</section>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /page content -->
+
+	<!-- footer content -->
+	<footer>
+		<div class="pull-right">
+			Developed and Design by <a href="https://medvault.com">Medvault</a>
+		</div>
+		<div class="clearfix"></div>
+	</footer>
+	<!-- /footer content -->
+	</div>
+	</div>
+
+	<!-- jQuery -->
+	<script th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
+	<!-- Bootstrap -->
+	<script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+	<!-- FastClick -->
+	<script th:src="@{/vendors/fastclick/lib/fastclick.js}"></script>
+	<!-- NProgress -->
+	<script th:src="@{/vendors/nprogress/nprogress.js}"></script>
+	<!-- bootstrap-progressbar -->
+	<script th:src="@{/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
+	<!-- iCheck -->
+	<script th:src="@{/vendors/iCheck/icheck.min.js}"></script>
+	<!-- bootstrap-daterangepicker -->
+	<script th:src="@{/vendors/moment/min/moment.min.js}"></script>
+	<script th:src="@{/vendors/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	<!-- bootstrap-wysiwyg -->
+	<script th:src="@{/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js}"></script>
+	<script th:src="@{/vendors/jquery.hotkeys/jquery.hotkeys.js}"></script>
+	<script th:src="@{/vendors/google-code-prettify/src/prettify.js}"></script>
+	<!-- jQuery Tags Input -->
+	<script th:src="@{/vendors/jquery.tagsinput/src/jquery.tagsinput.js}"></script>
+	<!-- Switchery -->
+	<script th:src="@{/vendors/switchery/dist/switchery.min.js}"></script>
+	<!-- Select2 -->
+	<script th:src="@{/vendors/select2/dist/js/select2.full.min.js}"></script>
+	<!-- Parsley -->
+	<script th:src="@{/vendors/parsleyjs/dist/parsley.min.js}"></script>
+	<!-- Autosize -->
+	<script th:src="@{/vendors/autosize/dist/autosize.min.js}"></script>
+	<!-- jQuery autocomplete -->
+	<script th:src="@{/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js}"></script>
+	<!-- starrr -->
+	<script th:src="@{/vendors/starrr/dist/starrr.js}"></script>
+	<!-- Custom Theme Scripts -->
+	<script th:src="@{/build/js/custom.min.js}"></script>
+
+
+	<!-- Datatables -->
+	<script th:src="@{/vendors/datatables.net/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-buttons/js/dataTables.buttons.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-buttons/js/buttons.flash.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-buttons/js/buttons.html5.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-buttons/js/buttons.print.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js}"></script>
+	<script th:src="@{/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js}"></script>
+	<script th:src="@{vendors/datatables.net-responsive/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js}"></script>
+	<script th:src="@{vendors/datatables.net-scroller/js/dataTables.scroller.min.js}"></script>
+	<script th:src="@{vendors/jszip/dist/jszip.min.js}"></script>
+	<script th:src="@{vendors/pdfmake/build/pdfmake.min.js}"></script>
+	<script th:src="@{vendors/pdfmake/build/vfs_fonts.js}"></script>
+
+	<script>
+		setTimeout(function () {
+			var flashMessage = document.getElementById('flashMessage');
+			if (flashMessage) {
+				flashMessage.style.display = 'none';
+			}
+		}, 3000); 
+	</script>
+	<script>
+		// Function to update the digital clock display
+		function updateDigitalClock() {
+			const clockElement = document.getElementById('digital-clock');
+			const now = new Date();
+
+			// Get current time in hours, minutes, and seconds
+			const hours = String(now.getHours()).padStart(2, '0');
+			const minutes = String(now.getMinutes()).padStart(2, '0');
+			const seconds = String(now.getSeconds()).padStart(2, '0');
+
+			// Display the time in HH:MM:SS format
+			clockElement.textContent = hours + ':' + minutes + ':' + seconds;
+
+			// Update every second
+			setTimeout(updateDigitalClock, 1000);
+		}
+
+		// Initial call to start the digital clock
+		updateDigitalClock();
+
+
+	</script>
+
+
+	<script>
+		function showNotification() {
+			$.ajax({
+				type: "GET",
+				url: "/medvault/admin/getNotification",
+				success: function (response) {
+					// Access the data from the JSON response
+					$('#notificationCount').text(response);
+					//alert(response);
+				},
+				error: function (xhr, status, error) {
+					// Handle error
+				}
+			});
+		}
+		showNotification();
+
+	</script>
+	<script>
+		function showNotificationList() {
+			$.ajax({
+				type: "GET",
+				url: "/medvault/admin/getNotificationList",
+				success: function (response) {
+					var responseHtml = "";
+					$.each(response, function (index, item) {
+						let timeDifference = calculateTimeDifference(item.created_date);
+
+						responseHtml += "<li><a><span class='image'><img src='/production/images/img.jpg'/></span><span>";
+						responseHtml += "<span >" + item.message + "</span></br>"; // Assuming 'name' is a property in YourData
+						responseHtml += "<span class='time'> " + timeDifference.hours + " h " + timeDifference.minutes + " m " + timeDifference.seconds + " s mins ago </span></br>";
+						responseHtml += "</span><span class='message'></span></a></li>";
+					});
+					$('#responseDiv').html(responseHtml);
+				},
+				error: function (xhr, status, error) {
+					// Handle error
+				}
+			});
+		}
+		showNotificationList();
+
+
+		function calculateTimeDifference(givenDate) {
+			// Convert the given date to a JavaScript Date object
+			let startDate = new Date(givenDate);
+
+			// Get the current date and time
+			let currentDate = new Date();
+
+			// Calculate the difference in milliseconds
+			let difference = currentDate - startDate;
+
+			// Calculate hours, minutes, and seconds
+			let hours = Math.floor(difference / (1000 * 60 * 60));
+			let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+			let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+			let day=hours/24;
+			return {day, minutes, seconds};
+		}
+	</script>
+
+	<script>
+		$("#notificationCount").click(function () {
+			//alert("clicked");
+			$.ajax({
+				type: "POST",
+				url: "/medvault/admin/updateNotificationStatus",
+				success: function (response) {
+					
+					$("#notificationCount").text("0");
+				},
+				error: function (xhr, status, error) {
+					// Handle error
+				}
+			});
+		});
+
+
+
+
+	</script>
+</body>
+
+<span>
+
+
+
+</html>
